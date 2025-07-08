@@ -2,6 +2,8 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
+
+@app.get('/')
 def read_root():
-    return {"MSG": "Hello World"}
+    return {'MSG': 'Hello World'}
+ 

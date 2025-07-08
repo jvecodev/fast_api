@@ -21,6 +21,9 @@ ruff = "^0.12.1"
 
 # configurations
 # configurações de formatações
+pytest = "^8.4.1"
+pytest-cov = "^6.2.1"
+taskipy = "^1.14.1"
 
 [tool.ruff]
 line-length = 79
@@ -31,3 +34,20 @@ extend-exclude = ['migrations']
 [tool.ruff.lint]
 preview = true
 select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+# no pythonpath é utilizado para definir o caminho do projeto
+[tool.pytest.ini_options]
+pythonpath = "." 
+addopts = '-p no:warnings'
+
+# taskipy é utilizado para definir tarefas que podem ser executadas via terminal, são atalhos
+[tool.taskipy.tasks]
+test = 'pytest -s -x --cov=fast_api -v'
+post_test = 'coverage html'
+
+
+
